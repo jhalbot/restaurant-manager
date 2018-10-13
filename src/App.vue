@@ -14,7 +14,12 @@
           <img class="align-center" src="./assets/logo.png">
         </v-layout>
         <v-layout>
-          <v-btn class="btn btn-secondary btn-width-90" >
+          <v-btn class="btn btn-secondary btn-width-90" @click="resetPage(); showTablesPage = true">
+            View Tables
+          </v-btn>
+        </v-layout>
+        <v-layout>
+          <v-btn class="btn btn-secondary btn-width-90" @click="resetPage(); showQueueModal = true">
             Queue New Diners
           </v-btn>
         </v-layout>
@@ -53,8 +58,11 @@
       </v-list>
     </v-navigation-drawer>
     
-    <v-content>
+    <v-content v-if="showTablesPage">
       <Tables/>
+    </v-content>
+    <v-content v-if="showQueueModal">
+      <QueueModal/>
     </v-content>
     
     <v-footer :fixed="fixed" app>
@@ -75,6 +83,8 @@ export default {
   },
   data () {
     return {
+      showQueueModal: false,
+      showTablesPage: false,
       clipped: false,
       drawer: true,
       fixed: false,
@@ -86,6 +96,13 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
+    }
+  },
+  methods: {
+    resetPage: function() {
+      console.log('trying to reset the page')
+      this.showQueueModal= false;
+      this.showTablesPage= false;
     }
   }
 }

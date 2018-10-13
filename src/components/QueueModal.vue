@@ -1,7 +1,5 @@
 <template lang="html">
-    <v-dialog v-model="showQueueModal" width="400" persistent>
-        <p>Modal is up!</p>
-    </v-dialog>
+    <p>Queue Modal is up!</p>
 </template>
 
 <script>
